@@ -58,6 +58,21 @@
                         </ul>
                     </li>
 
+                      <li class="">
+                        <a  href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                            <i class="material-icons">list</i>
+                            <span>Logs</span>
+                        </a>
+
+                        <ul class="ml-menu" style="display: none;">
+                            <li>
+                                <a href="{{ route('log-viewer::dashboard') }}" class="waves-effect waves-block">Dashboard</a>
+                            </li>
+                             <li>
+                                <a href="{{ route('log-viewer::logs.list') }}" class="waves-effect waves-block">Logs</a>
+                            </li>
+                        </ul>
+
             
                 </ul>
             </div>
@@ -74,56 +89,24 @@
         <!-- Right Sidebar -->
         <aside id="rightsidebar" class="right-sidebar">
             <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
+                <li role="presentation"><a href="#settings" data-toggle="tab"></a></li>
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active in active" id="settings">
                     <div class="demo-settings">
-                        <p>GENERAL SETTINGS</p>
                         <ul class="setting-list">
                             <li>
-                                <span>Report Panel Usage</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
+                                <span>
+                                <a  href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    Sign Out</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                </span>
+                            
                             </li>
-                            <li>
-                                <span>Email Redirect</span>
-                                <div class="switch">
-                                    <label><input type="checkbox"><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                        <p>SYSTEM SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Notifications</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Auto Updates</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                        <p>ACCOUNT SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Offline</span>
-                                <div class="switch">
-                                    <label><input type="checkbox"><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Location Permission</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
+                           
+                        </ul>                        
                     </div>
                 </div>
             </div>
