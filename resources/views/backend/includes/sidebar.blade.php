@@ -46,11 +46,19 @@
                     <!-- admin area -->
                      <li class="header text-uppercase">Administration</li>
                       <li class="">
-                        <a href="{{ route('admin.users.index')}}">
+                        <a  href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
                             <i class="material-icons">person</i>
                             <span>Users</span>
                         </a>
+
+                        <ul class="ml-menu" style="display: none;">
+                            <li>
+                                <a href="{{ route('admin.users.index') }}" class="waves-effect waves-block">All users</a>
+                            </li>
+                        </ul>
                     </li>
+
+            
                 </ul>
             </div>
             <!-- #Menu -->
