@@ -1,4 +1,34 @@
-@extends('admin.layouts.app')
+@extends('backend.layouts.app')
+
+@section('after-required-styles')
+  <!-- JQuery DataTable Css -->
+    <link href="/libs/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+@endsection
+
+@section('after-required-scripts')
+<!-- Jquery CountTo Plugin Js -->
+    <script src="/libs/adminbsb-materialdesign/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="/libs/adminbsb-materialdesign/plugins/raphael/raphael.min.js"></script>
+    <script src="/libs/adminbsb-materialdesign/plugins/morrisjs/morris.js"></script>
+
+    <!-- ChartJs -->
+    <script src="/libs/adminbsb-materialdesign/plugins/chartjs/Chart.bundle.js"></script>
+
+    <!-- Flot Charts Plugin Js -->
+    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.js"></script>
+    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.time.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="/libs/adminbsb-materialdesign/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+     <script src="/libs/adminbsb-materialdesign/js/pages/index.js"></script>
+@endsection
+
 
 @section('content')
 <div class="container-fluid">

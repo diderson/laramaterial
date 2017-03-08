@@ -17,4 +17,16 @@ Route::get('/', 'Frontend\FrontendController@index');
 
 Auth::routes();
 
-Route::get('admin/dashboard', 'Backend\DashboardController@index')->middleware('auth');
+
+
+Route::group(['middleware' => 'auth', 'as'=> 'admin.', 'prefix'=> 'admin'], function(){
+    
+    Route::get('/dashboard', 'Backend\DashboardController@index')->name('dashboard');
+    Route::get('/user/profile/{id?}', 'Backend\UsersController@profile')->name('profile');
+
+    Route::group(['as'=> 'users.', 'prefix'=> 'users'], function(){
+        Route::get('/', 'Backend\UsersController@index')->name('index');
+    });
+
+});
+

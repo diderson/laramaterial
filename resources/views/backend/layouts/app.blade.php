@@ -24,16 +24,20 @@
     <!-- Animation Css -->
     <link href="/libs/adminbsb-materialdesign/plugins/animate-css/animate.css" rel="stylesheet" />
 
-    <!-- Morris Chart Css-->
-    <link href="/libs/adminbsb-materialdesign/plugins/morrisjs/morris.css" rel="stylesheet" />
+    @yield('after-required-styles')
 
     <!-- Custom Css -->
     <link href="/libs/adminbsb-materialdesign/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="/libs/adminbsb-materialdesign/css/themes/all-themes.css" rel="stylesheet" />
-
+    
     @yield('after-styles')
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
 </head>
 
 <body class="theme-red">
@@ -68,20 +72,19 @@
         </div>
     </div>
     
-    @include('admin.includes.navbar')
+    @include('backend.includes.navbar')
     
-    @include('admin.includes.sidebar')
+    @include('backend.includes.sidebar')
 
-    <section class="content">
+    <section class="content" id="app">
         @yield('content')
     </section>
 
     @yield('before-script')
     <!-- Jquery Core Js -->
-    <script src="/libs/adminbsb-materialdesign/plugins/jquery/jquery.min.js"></script>
+    <script src="/js/app.js"></script>
 
-    <!-- Bootstrap Core Js -->
-    <script src="/libs/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
+   
 
     <!-- Select Plugin Js -->
     <script src="/libs/adminbsb-materialdesign/plugins/bootstrap-select/js/bootstrap-select.js"></script>
@@ -92,32 +95,10 @@
     <!-- Waves Effect Plugin Js -->
     <script src="/libs/adminbsb-materialdesign/plugins/node-waves/waves.js"></script>
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="/libs/adminbsb-materialdesign/plugins/jquery-countto/jquery.countTo.js"></script>
-
-    <!-- Morris Plugin Js -->
-    <script src="/libs/adminbsb-materialdesign/plugins/raphael/raphael.min.js"></script>
-    <script src="/libs/adminbsb-materialdesign/plugins/morrisjs/morris.js"></script>
-
-    <!-- ChartJs -->
-    <script src="/libs/adminbsb-materialdesign/plugins/chartjs/Chart.bundle.js"></script>
-
-    <!-- Flot Charts Plugin Js -->
-    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="/libs/adminbsb-materialdesign/plugins/flot-charts/jquery.flot.time.js"></script>
-
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="/libs/adminbsb-materialdesign/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+    @yield('after-required-scripts')
 
     <!-- Custom Js -->
     <script src="/libs/adminbsb-materialdesign/js/admin.js"></script>
-    <script src="/libs/adminbsb-materialdesign/js/pages/index.js"></script>
-
-    <!-- Demo Js -->
-    <script src="/libs/adminbsb-materialdesign/js/demo.js"></script>
 
     @yield('after-script')
 </body>
