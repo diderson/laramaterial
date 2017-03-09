@@ -1,12 +1,18 @@
 <?php
 
 /**
-* Return Authenticated user
-*/
-function user() {
+ * Return Authenticated user
+ */
+function user()
+{
     return \Auth::user();
 }
 
-function app_name(){
+/**
+ * Get app name
+ * @return string
+ */
+function app_name()
+{
     return config('app.name');
 }

@@ -1,43 +1,60 @@
 @extends('log-viewer::_template.master')
 
 @section('content')
-    <h1 class="page-header">Dashboard</h1>
-
-    <div class="row">
-        <div class="col-md-3">
-            <canvas id="stats-doughnut-chart" height="300"></canvas>
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>DASHBOARD</h2>
         </div>
-        <div class="col-md-9">
-            <section class="box-body">
-                <div class="row">
-                    @foreach($percents as $level => $item)
-                        <div class="col-md-4">
-                            <div class="info-box level level-{{ $level }} {{ $item['count'] === 0 ? 'level-empty' : '' }}">
-                                <span class="info-box-icon">
-                                    {!! log_styler()->icon($level) !!}
-                                </span>
 
-                                <div class="info-box-content">
-                                    <span class="info-box-text">{{ $item['name'] }}</span>
-                                    <span class="info-box-number">
-                                        {{ $item['count'] }} entries - {!! $item['percent'] !!} %
-                                    </span>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: {{ $item['percent'] }}%"></div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card" style="min-height: 600px">
+                    <div class="header text-uppercase">
+                        <h2>
+                            List of Users
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="col-md-3">
+                            <canvas id="stats-doughnut-chart" height="300"></canvas>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                @foreach($percents as $level => $item)
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="info-box-3 hover-zoom-effect level level-{{ $level }} {{ $item['count'] === 0 ? 'level-empty' : '' }}"
+                                             style="height: 90px">
+                                            <div class="icon">
+                                                {!! log_styler()->icon($level) !!}
+                                            </div>
+                                            <div class="content">
+                                                <div class="text text-uppercase">{{ $item['name'] }}</div>
+                                                <div class="number count-to" data-from="0"
+                                                     data-to="{{ $item['count'] }}" data-speed="1000"
+                                                     data-fresh-interval="20">
+                                                    {{ $item['count'] }} <span class="font-18">({!! $item['percent'] !!}
+                                                        %)</span>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </section>
+            </div>
         </div>
     </div>
 @endsection
 
 @section('scripts')
+    <script src="/libs/adminbsb-materialdesign/plugins/jquery-countto/jquery.countTo.js"></script>
     <script>
-        $(function() {
+        //        $('.count-to').countTo();
+
+        $(function () {
             new Chart($('canvas#stats-doughnut-chart'), {
                 type: 'doughnut',
                 data: {!! $chartData !!},

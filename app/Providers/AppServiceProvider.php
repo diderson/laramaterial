@@ -23,6 +23,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        /*
+         * Sets third party service providers that are only needed on local/testing environments
+         */
+        if (in_array($this->app->environment(), ['local', 'testing'], true)) {
+            /**
+             * Loader for registering facades.
+             */
+            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+
+            /*
+             * Load third party local providers
+             */
+            $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+
+            /*
+             * Load third party local aliases
+             */
+            $loader->alias('Debugbar', \Barryvdh\Debugbar\Facade::class);
+        }
     }
 }

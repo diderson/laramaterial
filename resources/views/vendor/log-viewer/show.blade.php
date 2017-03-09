@@ -1,35 +1,38 @@
 @extends('log-viewer::_template.master')
 
 @section('content')
-    <h1 class="page-header">Log [{{ $log->date }}]</h1>
-
-    <div class="row">
-        <div class="col-md-2">
-            @include('log-viewer::_partials.menu')
+    <div class="container-fluid">
+        <div class="block-header text-uppercase">
+            <h2>Log [{{ $log->date }}]</h2>
         </div>
-        <div class="col-md-10">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Log info :
+        <div class="row clearfix">
+            <div class="col-md-2">
+                @include('log-viewer::_partials.menu')
+            </div>
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Log info :
 
-                    <div class="group-btns pull-right">
-                        <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-xs btn-success">
-                            <i class="fa fa-download"></i> DOWNLOAD
-                        </a>
-                        <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-toggle="modal">
-                            <i class="fa fa-trash-o"></i> DELETE
-                        </a>
+                        <div class="group-btns pull-right">
+                            <a href="{{ route('log-viewer::logs.download', [$log->date]) }}"
+                               class="btn btn-xs btn-success">
+                                <i class="fa fa-download"></i> DOWNLOAD
+                            </a>
+                            <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-toggle="modal">
+                                <i class="fa fa-trash-o"></i> DELETE
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-condensed">
-                        <thead>
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
                             <tr>
                                 <td>File path :</td>
                                 <td colspan="5">{{ $log->getPath() }}</td>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>Log entries : </td>
                                 <td>
@@ -48,25 +51,25 @@
                                     <span class="label label-primary">{{ $log->updatedAt() }}</span>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
-            <div class="panel panel-default">
-                @if ($entries->hasPages())
-                    <div class="panel-heading">
-                        {!! $entries->render() !!}
+                <div class="panel panel-default">
+                    @if ($entries->hasPages())
+                        <div class="panel-heading">
+                            {!! $entries->render() !!}
 
-                        <span class="label label-info pull-right">
+                            <span class="label label-info pull-right">
                             Page {!! $entries->currentPage() !!} of {!! $entries->lastPage() !!}
                         </span>
-                    </div>
-                @endif
+                        </div>
+                    @endif
 
-                <div class="table-responsive">
-                    <table id="entries" class="table table-condensed">
-                        <thead>
+                    <div class="table-responsive">
+                        <table id="entries" class="table table-condensed">
+                            <thead>
                             <tr>
                                 <th>ENV</th>
                                 <th style="width: 120px;">Level</th>
@@ -74,8 +77,8 @@
                                 <th>Header</th>
                                 <th class="text-right">Actions</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             @foreach($entries as $key => $entry)
                                 <tr>
                                     <td>
@@ -112,19 +115,20 @@
                                     </tr>
                                 @endif
                             @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                            </tbody>
+                        </table>
+                    </div>
 
-                @if ($entries->hasPages())
-                    <div class="panel-footer">
-                        {!! $entries->render() !!}
+                    @if ($entries->hasPages())
+                        <div class="panel-footer">
+                            {!! $entries->render() !!}
 
-                        <span class="label label-info pull-right">
+                            <span class="label label-info pull-right">
                             Page {!! $entries->currentPage() !!} of {!! $entries->lastPage() !!}
                         </span>
-                    </div>
-                @endif
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
