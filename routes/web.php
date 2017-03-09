@@ -23,7 +23,8 @@ Route::group(['middleware' => 'auth', 'as' => 'admin.', 'prefix' => 'admin'], fu
 
     Route::group(['as' => 'users.', 'prefix' => 'users'], function () {
         Route::get('/', 'Backend\UsersController@index')->name('index');
-        Route::get('/roles', 'Backend\SecurityController@roles')->name('roles.index');
+
+        Route::post('/edit-password', 'Backend\UsersController@editPassword')->name('edit-password');
 
         Route::group(['prefix' => 'roles'], function () {
             Route::get('/', 'Backend\SecurityController@roles')->name('roles.index');
