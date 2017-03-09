@@ -81,7 +81,7 @@
     transition-property: -webkit-filter, -moz-filter, -o-filter, filter, opacity;
 }
 
-.info-box33.level-empty:hover {
+.info-box3.level-empty:hover {
     opacity: 1;
     -webkit-filter: grayscale(0);
     -moz-filter: grayscale(0);
@@ -107,15 +107,15 @@
 .badge.level-info,
 .badge.level-debug,
 .level, .level i,
-.info-box33.level-all,
-.info-box33.level-emergency,
-.info-box33.level-alert,
-.info-box33.level-critical,
-.info-box33.level-error,
-.info-box33.level-warning,
-.info-box33.level-notice,
-.info-box33.level-info,
-.info-box33.level-debug {
+.info-box3.level-all,
+.info-box3.level-emergency,
+.info-box3.level-alert,
+.info-box3.level-critical,
+.info-box3.level-error,
+.info-box3.level-warning,
+.info-box3.level-notice,
+.info-box3.level-info,
+.info-box3.level-debug {
     color: #FFF;
 }
 
