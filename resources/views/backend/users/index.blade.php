@@ -106,12 +106,24 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header text-uppercase">
+                        <div class="pull-right">
+                            <div class="btn-group" role="group">
+                                <a href="{{ route('admin.users.index') }}" class="btn btn-default waves-effect">All</a>
+                                <a href="{{ route('admin.users.create') }}"
+                                   class="btn btn-primary waves-effect">Create</a>
+                                <a href="{{ route('admin.users.index', ['deactivated']) }}"
+                                   class="btn btn-warning waves-effect">Deactivated</a>
+                                <a href="{{ route('admin.users.index', ['deleted']) }}"
+                                   class="btn btn-danger waves-effect">Deleted</a>
+                            </div>
+                        </div>
                         <h2>
                             List of Users
                         </h2>
+
                     </div>
                     <div class="body">
-                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <table class="table table-bordered table-responsive table-striped table-hover dataTable js-exportable">
                             <thead>
                             <tr>
                                 <th></th>
@@ -148,8 +160,10 @@
                                                     class="material-icons">refresh</i></a>
                                         <a href="#" class="btn bg-light-blue btn-mini" title="Make Active"><i
                                                     class="material-icons">pause</i></a>
-                                        <a href="#" class="btn  btn-danger btn-mini"><i
-                                                    class="material-icons">delete</i></a></td>
+                                        @if(user()->id !== $user->id)
+                                            <a href="#" class="btn  btn-danger btn-mini"><i
+                                                        class="material-icons">delete</i></a></td>
+                                    @endif
                                 </tr>
                             @empty
                                 <tr>

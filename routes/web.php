@@ -22,7 +22,13 @@ Route::group(['middleware' => 'auth', 'as' => 'admin.', 'prefix' => 'admin'], fu
     Route::get('/user/profile/{id?}', 'Backend\UsersController@profile')->name('profile');
 
     Route::group(['as' => 'users.', 'prefix' => 'users'], function () {
-        Route::get('/', 'Backend\UsersController@index')->name('index');
+
+        Route::get('/create', 'Backend\UsersController@create')->name('create');
+        Route::get('/{query?}', 'Backend\UsersController@index')->name('index');
+
+
+//        Route::get('/status/deactivate', 'Backend\User@create')->name('deactivate');
+//        Route::get('/status/activate', 'Backend\UsersController@create')->name('activate');
 
         Route::post('/edit-password', 'Backend\UsersController@editPassword')->name('edit-password');
 
